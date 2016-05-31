@@ -1,3 +1,57 @@
+<h1>MySQL Results Table:</h1>
+//Creating a table
+var TABLE = [{
+  Header1: "1,1",
+  Header2: "2,1",
+  Header3: "3,1",
+  Header4: "4,1"
+}, {
+  Header1: "1,2",
+  Header2: "2,2",
+  Header3: "3,2",
+  Header4: "4,2"
+}, {
+  Header1: "1,3",
+  Header2: "2,3",
+  Header3: "3,3",
+  Header4: "4,3"
+}];
+
+if (typeof module != "undefined" && module.exports)
+  module.exports = TABLE;
+
+function buildTable(data) {
+  var table = document.createElement("table");
+  table.setAttribute("id", "myTable");
+
+  var fields = Object.keys(data[0]);
+  //alert("first field: " + fields);
+  var headRow = document.createElement("tr");
+  fields.forEach(function(field) {
+    var headCell = document.createElement("th");
+    headCell.textContent = field;
+    headRow.appendChild(headCell);
+  });
+  table.appendChild(headRow);
+
+  data.forEach(function(object) {
+    var row = document.createElement("tr");
+    fields.forEach(function(field) {
+      var cell = document.createElement("td");
+      cell.textContent = object[field];
+      if (typeof object[field] == "number")
+        cell.style.textAlign = "right";
+      row.appendChild(cell);
+    });
+    table.appendChild(row);
+  });
+
+  return table;
+}
+document.body.appendChild(buildTable(TABLE));
+
+
+
 <h1>MySQL Results:</h1>
 	<form>
         <label for="nameId">Enter name of the exercise:</label>
