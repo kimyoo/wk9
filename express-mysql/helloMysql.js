@@ -22,7 +22,7 @@ app.get('/',function(req,res,next){
 });
 */
 app.get('/',function(req,res,next){
-res.render('home1');
+res.render('home2');
 });
 
 app.get('/insert',function(req,res,next){
